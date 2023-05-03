@@ -1,0 +1,9 @@
+/* Font */
+@font-face {
+     font-family: 'Forum';
+     src: url(../fonts/Forum-Regular.ttf);
+}
+
+* {
+     font-family: 'Forum';     
+}
