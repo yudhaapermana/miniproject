@@ -7,7 +7,7 @@ const Navbar = () => {
           <>
                <nav className="navbar navbar-expand-lg">
 				<div className="container-fluid">
-					<a className="navbar-brand" href="#">
+					<a className="navbar-brand" href="/">
 						<img src={LogoWhite} alt="" width={135} />
 					</a>
 					<button
@@ -25,27 +25,21 @@ const Navbar = () => {
 						className="collapse navbar-collapse justify-content-end"
 						id="navbarNav"
 					>
-						<div className="navbar-nav me-0 mt-3 mt-md-0 text-center">						
-							<a
-								className="nav-link mx-md-3" 
-								aria-current="page"
-								href="/">
-								Home
-							</a>																						
-							<a className="nav-link mx-md-3" href="#">
+						<div className="navbar-nav me-0 mt-3 mt-md-0 text-center">																																		
+							<a className="nav-link mx-md-3" href="/about-us">
 								About
 							</a>														
 							<a className="nav-link mx-md-3" href="#">
 								Portfolio
 							</a>														
 							<a className="nav-link mx-md-3" href="#">
-								Packages
+								Paket
 							</a>															
 							<a className="nav-link mx-md-3" href="#">
-								Contact
+								Kontak
 							</a>																						
 							<a className="mx-md-3 btn btn-light px-3 text-dark rounded-5" href="user-account">								
-								Login or Register 
+								Masuk atau Daftar 
 							</a>							
 						</div>
 					</div>
