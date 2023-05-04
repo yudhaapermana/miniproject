@@ -29,8 +29,8 @@ const Navbar = () => {
 							<a className="nav-link mx-md-3" href="/about-us">
 								About
 							</a>														
-							<a className="nav-link mx-md-3" href="#">
-								Portfolio
+							<a className="nav-link mx-md-3" href="/portfolio">
+								Portofolio
 							</a>														
 							<a className="nav-link mx-md-3" href="#">
 								Paket
