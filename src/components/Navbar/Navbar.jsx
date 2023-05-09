@@ -32,7 +32,7 @@ const Navbar = () => {
 							<a className="nav-link mx-md-3" href="/portfolio">
 								Portofolio
 							</a>														
-							<a className="nav-link mx-md-3" href="#">
+							<a className="nav-link mx-md-3" href="/packages">
 								Paket
 							</a>															
 							<a className="nav-link mx-md-3" href="#">
