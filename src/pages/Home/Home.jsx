@@ -12,7 +12,7 @@ const Home = () => {
                          <img src={LogoBlack} alt="" width={150}/>
                          <h1 className='text-center'>WEDDING <br /> PHOTOGRAPHY</h1>
                          <div className='btn btn-dark rounded-5 px-4 py-2'>
-                              <a href="" className='text-decoration-none text-white'>Boking Sekarang</a>
+                              <a href="/create-booking" className='text-decoration-none text-white'>Boking Sekarang</a>
                          </div>
                     </div>
                     <div className="hero-image text-end">
