@@ -35,7 +35,7 @@ const Navbar = () => {
 							<a className="nav-link mx-md-3" href="/packages">
 								Paket
 							</a>															
-							<a className="nav-link mx-md-3" href="#">
+							<a className="nav-link mx-md-3" href="/contact">
 								Kontak
 							</a>																						
 							<a className="mx-md-3 btn btn-light px-3 text-dark rounded-5" href="user-account">								
