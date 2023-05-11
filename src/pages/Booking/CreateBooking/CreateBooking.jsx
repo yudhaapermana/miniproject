@@ -1,22 +1,64 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { gql, useMutation } from '@apollo/client'
 import * as Yup from 'yup'
+import { v4 as uuid } from 'uuid';
 
 import FormikControl from '../../../elements/Formik/FormikControl'
 import Button from '../../../elements/Button/Button'
+import Loading from '../../../elements/Loading/Loading'
 import './CreateBoking.css'
 
-const CreateBooking = () => {
-     const navigate = useNavigate()         
-     const [booking, setBooking] = useState()
+const ADD_BOOKING = gql`
+     mutation MyMutation(
+               $id: uuid!, 
+               $first_name: String!, 
+               $last_name: String!, 
+               $email: String!, 
+               $phone_number: String!, 
+               $location: String!, 
+               $date: date!, 
+               $time: String!, 
+               $message: String!, 
+               $package_id: Int!
+          ) {
+               insert_booking_one(object: {
+                    id: $id, 
+                    first_name: $first_name, 
+                    last_name: $last_name, 
+                    email: $email, 
+                    phone_number: $phone_number, 
+                    package_id: $package_id, 
+                    date: $date, 
+                    time: $time, 
+                    location: $location, 
+                    message: $message
+               }) {
+                    id
+               }
+          }
+`
+
+const CreateBooking = () => {     
+     const [addBooking, { loading, error }] = useMutation(ADD_BOOKING)
+
+     if (loading) {
+          return <Loading />
+     }
+
+     if (error) {
+          console.log(error);
+          return null
+     }
+
+     const navigate = useNavigate()              
      
-     const initialValues = {
-          fName: "",
-          lName: "",
+     const initialValues = {                    
+          first_name: "",
+          last_name: "",
           email: "",
-          phoneNumber: "",
+          phone_number: "",
           package: "",
           date: "",
           time: "",          
@@ -26,23 +68,23 @@ const CreateBooking = () => {
 
      const packageList = [
           {key: 'Pilih....', value: ''},
-          {key: 'Paket Ekonomis', value: '1'},
-          {key: 'Paket Standar', value: '2'},
-          {key: 'Paket Premium', value: '3'}          
+          {key: 'Paket Ekonomis', value: 1},
+          {key: 'Paket Standar', value: 2},
+          {key: 'Paket Premium', value: 3}          
      ];
 
      const regexCharacter = /^[a-zA-Z0-9- ]*$/;
      const regexNumber = /^\d+$/;
      const validationSchema = Yup.object({
-          fName: Yup.string()
+          first_name: Yup.string()
                .matches(regexCharacter, 'nama depan tidak boleh mengandung simbol')
                .required('nama depan tidak boleh kosong'),
-          lName: Yup.string()
+          last_name: Yup.string()
                .matches(regexCharacter, 'nama belakang tidak boleh mengandung simbol'),
           email: Yup.string()
                .email('masukkan email yang valid')
                .required('email tidak boleh kosong'),
-          phoneNumber: Yup.string()
+          phone_number: Yup.string()
                .max(12, 'masukkan nomer telepon yang valid')
                .matches(regexNumber, 'masukkan nomer telepon yang valid')               
                .required('nomer telepon tidak boleh kosong'),
@@ -56,9 +98,22 @@ const CreateBooking = () => {
                .required('lokasi tidak boleh kosong')                  
      })
 
-     const onSubmit = (values) => {               
-          console.log('Form data', values)
-          navigate('/confirmation-booking', {state: values})          
+     const id_booking = uuid()
+
+     const onSubmit = (values) => {                         
+          addBooking({variables: {
+               id: id_booking,               
+               first_name: values.first_name, 
+               last_name: values.last_name, 
+               email: values.email, 
+               phone_number: values.phone_number, 
+               package_id: values.package, 
+               date: values.date, 
+               time: values.time, 
+               location: values.location, 
+               message: values.message
+          }})          
+          navigate(`/confirmation-booking/${id_booking}`)                      
      }
 
      return (
@@ -77,26 +132,26 @@ const CreateBooking = () => {
                                         >
                                              {({ values, errors, touched, handleChange}) => {
                                                   return (
-                                                       <Form>
-                                                            <div className="row">
+                                                       <Form>                           
+                                                            <div className="row">                                                                 
                                                                  <FormikControl
                                                                       control='input'
                                                                       className='form-group mb-3 col-12 col-md-6'
-                                                                      classField={'form-control rounded-0 mb-1' + (errors.fName && touched.fName ? ' is-invalid' :  '')}
+                                                                      classField={'form-control rounded-0 mb-1' + (errors.first_name && touched.first_name ? ' is-invalid' :  '')}
                                                                       type='text'
                                                                       label='Nama Depan'
-                                                                      name='fName'
-                                                                      value={values.fName} 
+                                                                      name='first_name'
+                                                                      value={values.first_name} 
                                                                       onChange={handleChange}
                                                                  />
                                                                  <FormikControl
                                                                       control='input'
                                                                       className='form-group mb-3 col-12 col-md-6'
-                                                                      classField={'form-control rounded-0 mb-1' + (errors.lName && touched.lName ? ' is-invalid' :  '')}
+                                                                      classField={'form-control rounded-0 mb-1' + (errors.last_name && touched.last_name ? ' is-invalid' :  '')}
                                                                       type='text'
                                                                       label='Nama Belakang'
-                                                                      name='lName'
-                                                                      value={values.lName} 
+                                                                      name='last_name'
+                                                                      value={values.last_name} 
                                                                       onChange={handleChange}
                                                                  />
                                                             </div>
@@ -114,11 +169,11 @@ const CreateBooking = () => {
                                                                  <FormikControl
                                                                       control='input'
                                                                       className='form-group mb-3 col-12 col-md-6'
-                                                                      classField={'form-control rounded-0 mb-1' + (errors.phoneNumber && touched.phoneNumber ? ' is-invalid' :  '')}
+                                                                      classField={'form-control rounded-0 mb-1' + (errors.phone_number && touched.phone_number ? ' is-invalid' :  '')}
                                                                       type='text'
                                                                       label='Nomer Telepon'
-                                                                      name='phoneNumber'
-                                                                      value={values.phoneNumber} 
+                                                                      name='phone_number'
+                                                                      value={values.phone_number} 
                                                                       onChange={handleChange}
                                                                  />
                                                             </div>
