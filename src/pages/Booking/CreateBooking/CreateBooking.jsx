@@ -1,6 +1,5 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
 import * as Yup from 'yup'
@@ -41,7 +40,7 @@ const ADD_BOOKING = gql`
           }
 `
 
-const CreateBooking = () => {
+const CreateBooking = () => {     
      const [addBooking, { loading, error }] = useMutation(ADD_BOOKING)
 
      if (loading) {
@@ -55,7 +54,7 @@ const CreateBooking = () => {
 
      const navigate = useNavigate()              
      
-     const initialValues = {
+     const initialValues = {                    
           first_name: "",
           last_name: "",
           email: "",
@@ -99,10 +98,11 @@ const CreateBooking = () => {
                .required('lokasi tidak boleh kosong')                  
      })
 
-     const onSubmit = (values) => {               
-          console.log('Form data', values)
+     const id_booking = uuid()
+
+     const onSubmit = (values) => {                         
           addBooking({variables: {
-               id: uuid(),               
+               id: id_booking,               
                first_name: values.first_name, 
                last_name: values.last_name, 
                email: values.email, 
@@ -112,8 +112,8 @@ const CreateBooking = () => {
                time: values.time, 
                location: values.location, 
                message: values.message
-          }})
-          navigate('/confirmation-booking', {state: values})          
+          }})          
+          navigate(`/confirmation-booking/${id_booking}`)                      
      }
 
      return (
@@ -132,8 +132,8 @@ const CreateBooking = () => {
                                         >
                                              {({ values, errors, touched, handleChange}) => {
                                                   return (
-                                                       <Form>
-                                                            <div className="row">
+                                                       <Form>                           
+                                                            <div className="row">                                                                 
                                                                  <FormikControl
                                                                       control='input'
                                                                       className='form-group mb-3 col-12 col-md-6'
