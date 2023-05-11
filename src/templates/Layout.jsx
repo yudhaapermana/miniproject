@@ -23,7 +23,7 @@ const Layout = () => {
                     <Route path='/packages' element={ <Packages/> } />
                     <Route path='/create-booking' element={ <CreateBooking/> } />
                     <Route path='/confirmation-booking/:id_booking' element={ <ConfirmationBooking/> } />
-                    <Route path='/edit-booking/' element={ <EditBooking/> } />
+                    <Route path='/edit-booking/:id_booking' element={ <EditBooking/> } />
                </Routes>
 
                <Footer/>

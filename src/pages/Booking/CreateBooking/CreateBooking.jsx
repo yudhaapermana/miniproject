@@ -19,7 +19,7 @@ const ADD_BOOKING = gql`
                $phone_number: String!, 
                $location: String!, 
                $date: date!, 
-               $time: time!, 
+               $time: String!, 
                $message: String!, 
                $package_id: Int!
           ) {
