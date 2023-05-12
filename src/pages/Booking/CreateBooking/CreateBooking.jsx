@@ -119,8 +119,8 @@ const CreateBooking = () => {
      return (
           <section className='booking'>
                <div className="container-fluid px-4">
-                    <div className="row justify-content-center">
-                         <div className="col-lg-8 col-12">
+                    <div className="row justify-content-center mx-2">
+                         <div className="col-lg-9 col-11">
                               <div className="bg-white text-black mx-auto px-md-5 px-4 pt-5 pt-md-4 pb-5">
                                    <div className="col-md-11 my-4 my-md-5 mx-auto">
                                         <h3 className='text-black text-center'>Silahkan Isi Data Di Bawah</h3>
@@ -136,7 +136,7 @@ const CreateBooking = () => {
                                                             <div className="row">                                                                 
                                                                  <FormikControl
                                                                       control='input'
-                                                                      className='form-group mb-3 col-12 col-md-6'
+                                                                      className='form-group mb-3 col-6'
                                                                       classField={'form-control rounded-0 mb-1' + (errors.first_name && touched.first_name ? ' is-invalid' :  '')}
                                                                       type='text'
                                                                       label='Nama Depan'
@@ -146,7 +146,7 @@ const CreateBooking = () => {
                                                                  />
                                                                  <FormikControl
                                                                       control='input'
-                                                                      className='form-group mb-3 col-12 col-md-6'
+                                                                      className='form-group mb-3 col-6'
                                                                       classField={'form-control rounded-0 mb-1' + (errors.last_name && touched.last_name ? ' is-invalid' :  '')}
                                                                       type='text'
                                                                       label='Nama Belakang'

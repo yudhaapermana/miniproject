@@ -4,11 +4,8 @@
      height: max-content;
 }
 
-.hero-title {
-     width: max-content;
-     height: max-content;
-     padding: 4em 4em;
-     margin: 4.1em 0;
+.hero-title {     
+     padding: 4em 4em;     
      background-color: white;
 }
 
@@ -18,4 +15,15 @@
      letter-spacing: 0.04em;
      padding-top: 1em;
      padding-bottom: 1em;
+}
+
+/* Breakpoints */
+@media screen and (max-width: 767.98px) {
+     .hero-title {
+          padding: 3em 2em;
+     }
+     .hero-title h1 {
+          line-height: 45px;          
+          font-size: 41px;          
+     }
 }

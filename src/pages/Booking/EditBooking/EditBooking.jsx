@@ -15,8 +15,8 @@ const EditBooking = () => {
      return (
           <section className='edit-booking'>
                <div className="container-fluid px-4">
-                    <div className="row justify-content-center">
-                         <div className="col-lg-8 col-12">
+                    <div className="row justify-content-center mx-2">
+                         <div className="col-lg-9 col-11">
                               <div className="bg-white text-black mx-auto px-md-5 px-4 pt-4 pt-md-4 pb-5">
                                    <div className="col-md-11 my-4 my-md-5 mx-auto">
                                         <Button
