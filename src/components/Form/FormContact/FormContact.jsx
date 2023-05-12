@@ -30,7 +30,8 @@ const FormContact = () => {
           Swal.fire({
                icon: 'success',
                title: 'Pesan Berhasil Terkirim',
-               iconColor: 'black'                   
+               iconColor: 'black',
+               width: 400                   
           })          
      }
 

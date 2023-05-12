@@ -2,6 +2,7 @@ import React from 'react'
 import Moment  from 'moment/moment'
 import { useNavigate, useParams } from 'react-router-dom'
 import { gql, useSubscription } from '@apollo/client'
+import Swal from 'sweetalert2'
 
 import Button from '../../elements/Button/Button'
 import LoadingBooking from '../../elements/Loading/LoadingBooking'
@@ -41,6 +42,34 @@ const ListDetailBooking = ({id}) => {
      if (error) {
           console.log(error);
           return null
+     }
+
+     const onClick = () => {
+          Swal.fire({
+               width: 400,
+               text: "Yakin ingin melakukan pembayaran?",
+               icon: "warning",
+               showCancelButton: true,
+               cancelButtonText: "Tidak",
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Iya, yakin",
+          }).then((result) => {
+               if (result.isConfirmed) {
+                    Swal.fire({
+                         width: 400,
+                         icon: "success",
+                         title: "Berhasil",
+                         text: "Pembayaran berhasil dilakukan",
+                         iconColor: "black",
+                         confirmButtonText: "OK",
+                    }).then((result) => {
+                         if (result.isConfirmed) {
+                              navigate("/");
+                         }
+                    });
+               }
+          });
      }
 
      return (
@@ -122,6 +151,7 @@ const ListDetailBooking = ({id}) => {
                                    <Button
                                         classButton={'btn btn-dark rounded-0 py-2 col-12'}
                                         label={'Bayar Sekarang'}
+                                        onClick={onClick}
                                    />
                               </div> 
                          </>                         
