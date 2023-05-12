@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Navbar from '../components/Navbar/Navbar'
 import Footer from '../components/Footer/Footer'
@@ -11,6 +11,7 @@ import Contact from '../pages/Contact/Contact'
 import CreateBooking from '../pages/Booking/CreateBooking/CreateBooking'
 import ConfirmationBooking from '../pages/Booking/ConfirmationBooking/ConfirmationBooking'
 import EditBooking from '../pages/Booking/EditBooking/EditBooking'
+import NotFound from '../pages/NotFound'
 
 const Layout = () => {
      return (
@@ -26,6 +27,8 @@ const Layout = () => {
                     <Route path='/create-booking' element={ <CreateBooking/> } />
                     <Route path='/confirmation-booking/:id_booking' element={ <ConfirmationBooking/> } />
                     <Route path='/edit-booking/:id_booking' element={ <EditBooking/> } />
+                    <Route path='/404' element={<NotFound/>} />
+                    <Route path='*' element={<Navigate to='/404' />} />
                </Routes>
 
                <Footer/>
