@@ -1,0 +1,10 @@
+.edit-booking {
+     padding: 4em 0 !important;
+     background-color: black;
+     height: max-content;
+}
+
+.icon-back {
+     font-size: 45px;          
+     margin-bottom: 0.8em;
+}
