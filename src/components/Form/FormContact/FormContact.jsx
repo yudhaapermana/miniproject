@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import Swal from 'sweetalert2';
 
 import FormikControl from '../../../elements/Formik/FormikControl';
 import Button from '../../../elements/Button/Button';
@@ -25,8 +26,12 @@ const FormContact = () => {
                .required('kolom tidak boleh kosong')
      })
 
-     const onSubmit = (values) => {
-          window.alert('Data berhasil terkirim')
+     const onSubmit = () => {
+          Swal.fire({
+               icon: 'success',
+               title: 'Pesan Berhasil Terkirim',
+               iconColor: 'black'                   
+          })          
      }
 
      return (
