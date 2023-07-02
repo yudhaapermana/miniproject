@@ -11,7 +11,7 @@ const httpLink = new HttpLink({
 });
 
 const wsLink = new GraphQLWsLink(createClient({
-     url: 'ws://cool-locust-13.hasura.app/v1/graphql',
+     url: 'wss://cool-locust-13.hasura.app/v1/graphql',
      connectionParams: {
           headers: {
                'x-hasura-admin-secret': 'c3hnUAMp9tnLw9ZGmzddrmXINdPimXuybKQRciKYGiy2cwI86S62o2hS4cQWFDhD'          

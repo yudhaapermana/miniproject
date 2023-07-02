@@ -1,11 +1,11 @@
 import React from 'react'
-import { gql, useSubscription } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client'
 
 import Loading from '../../elements/Loading/Loading'
 import Card from '../Card/Card'
 
 const GET_ALL_PACKAGES = gql`
-     subscription MySubscription {
+     query MyQuery {
           packages {
                id
                name
@@ -13,10 +13,10 @@ const GET_ALL_PACKAGES = gql`
                price
           }
      }
-`
+`;
 
 const ListPackages = () => {
-     const {data, loading, error} = useSubscription(GET_ALL_PACKAGES)
+     const {data, loading, error} = useQuery(GET_ALL_PACKAGES);     
      
      if (loading) {
           return <Loading/>
