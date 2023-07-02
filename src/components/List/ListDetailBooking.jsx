@@ -1,6 +1,6 @@
 import React from 'react'
 import Moment  from 'moment/moment'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { gql, useSubscription } from '@apollo/client'
 import Swal from 'sweetalert2'
 
